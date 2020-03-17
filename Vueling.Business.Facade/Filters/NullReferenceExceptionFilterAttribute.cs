@@ -10,7 +10,7 @@ namespace Vueling.Business.Facade.Filters
 	{
 		public override void OnException(HttpActionExecutedContext actionExecutedContext)
 		{
-			if (actionExecutedContext.Exception is NotImplementedException)
+			if (actionExecutedContext.Exception is NullReferenceException)
 			{
 				var httpResponseMessage =
 					new HttpResponseMessage(HttpStatusCode.InternalServerError)

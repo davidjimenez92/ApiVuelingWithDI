@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Http;
 using Application.Logic.Contracts;
 using log4net;
@@ -8,7 +9,6 @@ using Vueling.Domain.Entities;
 namespace Vueling.Business.Facade.Controllers
 {
     [NotImplementedExceptionFilter]
-    [NullReferenceExceptionFilter]
     public class StudentController : ApiController
     {
         private readonly ILog logger = null;
