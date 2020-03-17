@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
+using log4net;
 using Vueling.Domain.Entities;
 using Vueling.Infrastucture.Repositories.Contracts;
 
@@ -11,8 +12,21 @@ namespace Vueling.Infrastucture.Repositories.Implementations
 {
 	public class StudentRepository : IRepository<Student>
 	{
+		//implementar logger
+		private readonly ILog logger = null;
+
+		public StudentRepository()
+		{
+		}
+
+		public StudentRepository(ILog logger)
+		{
+			this.logger = logger;
+		}
 		public Student Create(Student model)
 		{
+			if (model == null)
+				throw new NullReferenceException();
 			try
 			{
 				using (var connection = new SqlConnection(Resource.ConnectionString))
@@ -24,12 +38,9 @@ namespace Vueling.Infrastucture.Repositories.Implementations
 					return SqlMapper.Query<Student>(connection, "SELECT * FROM Student WHERE Id = @Id", new { id }).Single();
 				}
 			}
-			catch (ArgumentNullException ane)
-			{
-				throw;
-			}
 			catch (InvalidOperationException ioe)
 			{
+				logger.Error(ioe.Message, ioe);
 				throw;
 			}
 		}
@@ -47,6 +58,7 @@ namespace Vueling.Infrastucture.Repositories.Implementations
 
 		public List<Student> Read()
 		{
+			logger.Info("Get all method started");
 			try
 			{
 				using (IDbConnection connection = new SqlConnection(Resource.ConnectionString))
@@ -56,13 +68,37 @@ namespace Vueling.Infrastucture.Repositories.Implementations
 			}
 			catch (ArgumentNullException ane)
 			{
+				logger.Error(ane.Message, ane);
 				throw;
 			}
 		}
 
 		public Student Update(Student model)
 		{
-			throw new NotImplementedException();
+			if (model == null)
+				throw new NullReferenceException();
+			logger.Info("Get all method started");
+
+			using (IDbConnection connection = new SqlConnection(Resource.ConnectionString))
+			{
+				connection.Query<Student>("UPDATE Student set Name = @Name , Surname = @Surname, DateOfBirth = @DateOfBirth WHERE Id = @Id",
+						new { model.Name, model.Surname, model.DateOfBirth, model.Id });
+
+				return SqlMapper.Query<Student>(connection, "SELECT * FROM Student WHERE id = @id", new { model.Id }).Single();
+			}
+
+		}
+
+		public void TruncateDB()
+		{
+			string query = "TRUNCATE TABLE Student";
+
+			using (SqlConnection connnection = new SqlConnection(Resource.ConnectionString))
+			using (SqlCommand command = new SqlCommand(query, connnection))
+			{
+				connnection.Open();
+				command.ExecuteNonQuery();
+			}
 		}
 	}
 }

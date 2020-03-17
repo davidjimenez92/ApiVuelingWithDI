@@ -1,36 +1,52 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 using Application.Logic.Contracts;
-using Application.Logic.Implementations;
+using log4net;
+using Vueling.Business.Facade.Filters;
 using Vueling.Domain.Entities;
 
 namespace Vueling.Business.Facade.Controllers
 {
+    [NotImplementedExceptionFilter]
+    [NullReferenceExceptionFilter]
     public class StudentController : ApiController
     {
-        private readonly IService<Student> studentService;
+        private readonly ILog logger = null;
+        private readonly IService<Student> service = null;
 
-        public StudentController(IService<Student> studentService)
+        public StudentController()
         {
-            this.studentService = studentService;
         }
 
-        [Route("api/get")]
+        public StudentController(ILog logger, IService<Student> service)
+        {
+            this.logger = logger;
+            this.service = service;
+        }
+
+        [HttpGet]
         public List<Student> Get()
         {
-            return studentService.Read();
+            logger.Debug("Error Log");
+            return service.Read();
         }
 
-        [Route("api/add")]
+        [HttpPost]
         public Student Post(Student model)
         {
-            return studentService.Create(model);
+            return service.Create(model);
         }
 
-        [Route("api/delete")]
+        [HttpDelete]
         public bool Delete(int id)
         {
-            return studentService.Delete(id);
+            return service.Delete(id);
+        }
+
+        [HttpPut]
+        public Student Update(Student model)
+        {
+            return service.Update(null);
         }
     }
 }

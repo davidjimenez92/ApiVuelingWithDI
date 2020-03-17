@@ -105,6 +105,10 @@
       <Project>{F228A0CF-F8E4-41A9-B125-53D25953229A}</Project>
       <Name>Vueling.Application.Logic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Vueling.Domain.Entities\Vueling.Domain.Entities.csproj">
+      <Project>{69D0CE05-E2D0-4B3F-9873-8716C4B04B12}</Project>
+      <Name>Vueling.Domain.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

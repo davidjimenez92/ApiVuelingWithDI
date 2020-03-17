@@ -1,22 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Application.Logic.Contracts;
+using log4net;
 using Vueling.Domain.Entities;
 using Vueling.Infrastucture.Repositories.Contracts;
-using Vueling.Infrastucture.Repositories.Implementations;
 
 namespace Application.Logic.Implementations
 {
 	public class StudentService : IService<Student>
 	{
 
-		public readonly IRepository<Student> repository = null;
+		private readonly IRepository<Student> repository = null;
+		private readonly ILog logger = null;
 
-		public StudentService(IRepository<Student> repository)
+		public StudentService(ILog logger, IRepository<Student> repository)
 		{
+			this.logger = logger;
 			this.repository = repository;
 		}
+
+		public StudentService()
+		{
+		}
+
 		public Student Create(Student model)
 		{
+			if (model == null)
+				throw new NullReferenceException();
 			return repository.Create(model);	
 		}
 
@@ -32,6 +42,8 @@ namespace Application.Logic.Implementations
 
 		public Student Update(Student model)
 		{
+			if (model == null)
+				throw new NullReferenceException();
 			return repository.Update(model);
 		}
 	}

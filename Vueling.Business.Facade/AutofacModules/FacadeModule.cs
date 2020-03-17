@@ -14,8 +14,10 @@ namespace Vueling.Business.Facade.AutofacModules
 		{
 			builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
-			builder.RegisterType<StudentService>().As<IService<Student>>();
+			builder.RegisterType<StudentService>()
+				.As<IService<Student>>();
 
+			builder.RegisterModule(new LogginModule());
 			builder.RegisterModule(new LogicModule());
 
 			base.Load(builder);

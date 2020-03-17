@@ -19,8 +19,6 @@ namespace Vueling.Business.Facade.App_Start
 		{
 			var builder = new ContainerBuilder();
 
-			builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-
 			builder.RegisterModule(new FacadeModule());
 
 			var container = builder.Build();

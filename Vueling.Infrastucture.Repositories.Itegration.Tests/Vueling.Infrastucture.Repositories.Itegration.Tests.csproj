@@ -76,6 +76,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Vueling.Domain.Entities\Vueling.Domain.Entities.csproj">
+      <Project>{69D0CE05-E2D0-4B3F-9873-8716C4B04B12}</Project>
+      <Name>Vueling.Domain.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Vueling.Infrastucture.Repositories\Vueling.Infrastucture.Repositories.csproj">
       <Project>{B83A82AE-856E-472D-BFA7-9E77F8B10ACE}</Project>
       <Name>Vueling.Infrastucture.Repositories</Name>

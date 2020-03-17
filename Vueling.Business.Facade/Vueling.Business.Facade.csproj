@@ -106,7 +106,10 @@
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="AutofacModules\FacadeModule.cs" />
+    <Compile Include="AutofacModules\LogginModule.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Filters\NotImplementedExceptionFilterAttribute.cs" />
+    <Compile Include="Filters\NullReferenceExceptionFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -134,10 +137,6 @@
     <ProjectReference Include="..\Vueling.Domain.Entities\Vueling.Domain.Entities.csproj">
       <Project>{69d0ce05-e2d0-4b3f-9873-8716c4b04b12}</Project>
       <Name>Vueling.Domain.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Vueling.Infrastucture.Repositories\Vueling.Infrastucture.Repositories.csproj">
-      <Project>{B83A82AE-856E-472D-BFA7-9E77F8B10ACE}</Project>
-      <Name>Vueling.Infrastucture.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

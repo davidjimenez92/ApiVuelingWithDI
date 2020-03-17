@@ -5,11 +5,12 @@ using Vueling.Infrastucture.Repositories.Implementations;
 
 namespace Application.Logic.AutofacModules
 {
-	public class LogicModule: Autofac.Module
+	public class LogicModule: Module
 	{
 		protected override void Load(ContainerBuilder builder)
 		{
-			builder.RegisterType<StudentRepository>()
+			builder
+				.RegisterType<StudentRepository>()
 				.As<IRepository<Student>>();
 
 			base.Load(builder);

@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using Vueling.Business.Facade.Filters;
 
 namespace Vueling.Business.Facade
 {
@@ -16,6 +17,9 @@ namespace Vueling.Business.Facade
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Filters.Add(new NotImplementedExceptionFilterAttribute());
+            config.Filters.Add(new NullReferenceExceptionFilterAttribute());
         }
     }
 }
