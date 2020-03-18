@@ -41,7 +41,7 @@ namespace Vueling.Domain.Entities
                    Id == student.Id &&
                    Name == student.Name &&
                    Surname == student.Surname &&
-                   DateOfBirth == student.DateOfBirth;
+                   DateOfBirth.ToString("dd/MM/yyyy") == student.DateOfBirth.ToString("dd/MM/yyyy");
         }
 
         public override int GetHashCode()

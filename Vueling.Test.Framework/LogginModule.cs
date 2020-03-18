@@ -4,9 +4,9 @@ using Autofac.Core;
 using Autofac.Core.Registration;
 using log4net;
 
-namespace Vueling.Business.Facade.AutofacModules
+namespace Vueling.Test.Framework
 {
-	public class LogginModule : Module
+	public class LogginModule: Module
 	{
 		protected override void AttachToComponentRegistration(IComponentRegistryBuilder componentRegistry, IComponentRegistration registration)
 		{

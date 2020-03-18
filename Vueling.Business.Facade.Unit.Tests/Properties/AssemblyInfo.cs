@@ -5,15 +5,14 @@ using System.Runtime.InteropServices;
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("Vueling.Infrastucture.Repositories.Itegration.Tests")]
+[assembly: AssemblyTitle("Vueling.Business.Facade.Unit.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Vueling.Infrastucture.Repositories.Itegration.Tests")]
+[assembly: AssemblyProduct("Vueling.Business.Facade.Unit.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
 
 // Si establece ComVisible en false, los tipos de este ensamblado no estarán visibles 
 // a los componentes COM. Si necesita obtener acceso a un tipo en este ensamblado desde 
@@ -21,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // El siguiente GUID sirve como id. de typelib si este proyecto se expone a COM.
-[assembly: Guid("9259e379-d1aa-4cb3-81ef-6c605438c985")]
+[assembly: Guid("5e7fa132-be68-4dd0-9f60-306bd0424879")]
 
 // La información de versión de un ensamblado consta de los cuatro valores siguientes:
 //

@@ -89,16 +89,5 @@ namespace Vueling.Infrastucture.Repositories.Implementations
 
 		}
 
-		public void TruncateDB()
-		{
-			string query = "TRUNCATE TABLE Student";
-
-			using (SqlConnection connnection = new SqlConnection(Resource.ConnectionString))
-			using (SqlCommand command = new SqlCommand(query, connnection))
-			{
-				connnection.Open();
-				command.ExecuteNonQuery();
-			}
-		}
 	}
 }

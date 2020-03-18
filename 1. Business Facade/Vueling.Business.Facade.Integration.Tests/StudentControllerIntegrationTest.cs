@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Vueling.Business.Facade.Integration.Tests
 {
 	[TestClass]
-	public class UnitTest1
+	public class StudentControllerIntegrationTest
 	{
 		[TestMethod]
 		public void TestMethod1()

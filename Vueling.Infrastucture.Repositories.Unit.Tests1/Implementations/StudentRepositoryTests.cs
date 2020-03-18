@@ -25,10 +25,11 @@ namespace Vueling.Infrastucture.Repositories.Implementations.Tests
 			using (var mock = AutoMock.GetLoose())
 			{
 				mock.Mock<IRepository<Student>>().Setup(repository => repository.Create(inputStudent)).Returns(inputStudent);
-
 				var sut = mock.Create<IRepository<Student>>();
+
 				var spected = sut.Create(inputStudent);
 
+				mock.Mock<IRepository<Student>>().Verify(repository => repository.Create(inputStudent));
 				Assert.AreEqual(spected, inputStudent);
 			}
 		}
@@ -39,9 +40,10 @@ namespace Vueling.Infrastucture.Repositories.Implementations.Tests
 		{
 			using (var mock = AutoMock.GetLoose())
 			{
+				//Arrange - configure the mock
 				mock.Mock<IRepository<Student>>().Setup(repository => repository.Create(null)).Throws(new NullReferenceException());
-
 				var sut = mock.Create<IRepository<Student>>();
+				
 				sut.Create(null);
 			}
 		}
@@ -52,11 +54,13 @@ namespace Vueling.Infrastucture.Repositories.Implementations.Tests
 			var id = 1;
 			using (var mock = AutoMock.GetLoose())
 			{
+				//Arrange - configure the mock
 				mock.Mock<IRepository<Student>>().Setup(repository => repository.Delete(id)).Returns(true);
-
 				var sut = mock.Create<IRepository<Student>>();
+
 				var spected = sut.Delete(id);
 
+				mock.Mock<IRepository<Student>>().Verify(repository => repository.Delete(id));
 				Assert.IsTrue(spected);
 			}
 		}
@@ -67,10 +71,11 @@ namespace Vueling.Infrastucture.Repositories.Implementations.Tests
 			using (var mock = AutoMock.GetLoose())
 			{
 				mock.Mock<IRepository<Student>>().Setup(repository => repository.Read()).Returns(new List<Student>());
-
 				var sut = mock.Create<IRepository<Student>>();
+
 				var spected = sut.Read();
 
+				mock.Mock<IRepository<Student>>().Verify(repository => repository.Read());
 				Assert.AreEqual(spected.GetType(), typeof(List<Student>));
 			}
 		}
@@ -81,10 +86,11 @@ namespace Vueling.Infrastucture.Repositories.Implementations.Tests
 			using (var mock = AutoMock.GetLoose())
 			{
 				mock.Mock<IRepository<Student>>().Setup(repository => repository.Update(inputStudent)).Returns(inputStudent);
-
 				var sut = mock.Create<IRepository<Student>>();
+
 				var spected = sut.Update(inputStudent);
 
+				mock.Mock<IRepository<Student>>().Verify(repository => repository.Update(inputStudent));
 				Assert.AreEqual(spected, inputStudent);
 			}
 		}
@@ -96,8 +102,8 @@ namespace Vueling.Infrastucture.Repositories.Implementations.Tests
 			using (var mock = AutoMock.GetLoose())
 			{
 				mock.Mock<IRepository<Student>>().Setup(repository => repository.Update(null)).Throws(new NullReferenceException());
-
 				var sut = mock.Create<IRepository<Student>>();
+
 				sut.Update(null);
 			}
 		}

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Reflection;
-using System.Web.Http;
-using Application.Logic.AutofacModules;
+﻿using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
 using Vueling.Business.Facade.AutofacModules;

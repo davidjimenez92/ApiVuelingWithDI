@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 using Application.Logic.Contracts;
 using log4net;
-using Vueling.Business.Facade.Filters;
 using Vueling.Domain.Entities;
 
 namespace Vueling.Business.Facade.Controllers
 {
-    [NotImplementedExceptionFilter]
     public class StudentController : ApiController
     {
         private readonly ILog logger = null;
@@ -27,7 +24,6 @@ namespace Vueling.Business.Facade.Controllers
         [HttpGet]
         public List<Student> Get()
         {
-            logger.Debug("Error Log");
             return service.Read();
         }
 
@@ -46,7 +42,7 @@ namespace Vueling.Business.Facade.Controllers
         [HttpPut]
         public Student Update(Student model)
         {
-            return service.Update(null);
+            return service.Update(model);
         }
     }
 }
